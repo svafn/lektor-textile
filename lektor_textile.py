@@ -1,17 +1,18 @@
 # -*- coding: utf-8 -*-
-""" Adds Textile markup support to Lektor
- 
-  date: 2018-02-20
-  
-  Using:
-    In  model file (page.ini) add (example):
-      [fields.body]
-      label = Body
-      type = textile
-  
-  
-  depends:
-    textile
+"""Adds Textile markup support to Lektor.
+
+date: 2018-02-20
+
+Using:
+  In  model file (page.ini) add (example):
+    [fields.body]
+    label = Body
+    type = textile
+
+
+depends:
+  textile
+
 """
 __version__ = '0.1'
 __author__ = 'Viktor Semenyuk <svafn1@gmail.com>'
@@ -26,8 +27,10 @@ def textile_to_html(text):
     out = textile.textile(text=text)
     return out
 
-# Lektor from escaping HTML tags.
+
 class HTML(object):
+    # Lektor from escaping HTML tags.
+
     def __init__(self, html):
         self.html = html
 
@@ -48,4 +51,3 @@ class TextilePlugin(Plugin):
 
     def on_setup_env(self, **extra):
         self.env.add_type(TextileType)
-
